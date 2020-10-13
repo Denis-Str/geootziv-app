@@ -2,7 +2,7 @@
   "name": "webpack-env",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Arsenii Berezin",
+  "author": "",
   "scripts": {
     "build": "webpack --progress --colors",
     "watch": "webpack-dev-server --progress --colors --open",
