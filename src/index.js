@@ -1,6 +1,5 @@
 import './style.css'
-import { mapInit as busya } from './js/ymaps'
+import { mapInit } from './js/ymaps'
 
-window.onload = busya();
+window.onload = mapInit();
 
-console.log('Hello, Webpack!');

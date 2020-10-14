@@ -1,49 +1,37 @@
-function mapInit() { 
-    ymaps.ready(() => {
-        let marksArr = [];
+import popup from '../templates/popup.hbs'
 
+function mapInit() {
+    let nameInput = document.querySelector('#name')
+    let placeInput = document.querySelector('#place')
+    let contentInput = document.querySelector('#content')
+    let btn = document.querySelector('#btn')
+
+    ymaps.ready(() => {
         let map = new ymaps.Map('map', {
             center: [47.222078, 39.720349],
-            zoom: 11,
+            zoom: 12,
             controls: ['zoomControl'],
             behaviors: ['drag']
         });
-        map.events.add('click', function (e) {
-            // Получение координат щелчка
-            let coords = e.get('coords');
-            createPoint(coords);
-        });
-        marksArr.forEach(coords => {
-            createPoint(coords)
+
+        map.events.add('click', (e) => {
+            createdPlacemark(e.get('coords'));
         });
 
-        function createPoint(coords) {
-            let myPlacemark = new ymaps.Placemark(coords, {
-                hintContent: 'Собственный значок метки',
-                balloonContent: 'Это красивая метка'
-            }, {
-                // Опции.
-                // Необходимо указать данный тип макета.
-                iconLayout: 'default#image',
-                // Своё изображение иконки метки.
-                //iconImageHref: './img/icons/map-marker.svg',
-                // Размеры метки.
-                iconImageSize: [46, 57],
-                // Смещение левого верхнего угла иконки относительно
-                // её "ножки" (точки привязки).
-                iconImageOffset: [-5, -38]
+
+         function createdPlacemark(coords) {
+            map.balloon.open(coords, { content: popup() }, {
+                minHeight: 165,
+                minWidth: 180
             });
-            map.geoObjects.add(myPlacemark);
-        }
+            console.log(document.querySelector('#name'))
 
-        // let clusterer = new ymaps.Clusterer({
-        //
-        // });
-        //
-        // map.geoObject.add(clusterer);
+            let myPlacemark = new ymaps.Placemark(coords, {
+                //hintContent: 'Собственный значок метки',
+                balloonContent: '32432'
+            });
+        }
     })
 }
 
-export { 
-    mapInit
-}
+export { mapInit }

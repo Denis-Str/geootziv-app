@@ -1,6 +1,16 @@
-<div>
-    <input type="text">
-    <input type="text">
-    <textarea name="" id="" cols="30" rows="10"></textarea>
-    <button></button>
+<div id="popup">
+    <ul class="list">
+      <li class="list__item">
+        <div class="list__item-inner">
+          <div class="list__item-name"></div>
+          <div class="list__item-place"></div>
+        </div>
+        <div class="list__item-desc"></div>
+      </li>
+    </ul>
+    <div>ВАШ ОТЗЫВ {{ hello }} </div>
+    <input type="text" placeholder="Ваше имя" id="name">
+    <input type="text" placeholder="Укажите место" id="place">
+    <textarea rows="5" placeholder="Поделитесь впечатлениями" id="content"></textarea>
+    <button type="button" id="btn">Добавить</button>
 </div>
