@@ -16,8 +16,22 @@ ul {
 }
 
 #popup {
-    position: absolute;
     display: flex;
     flex-direction: column;
     background-color: #fff;
+}
+.list__item-inner {
+    display: flex;
+}
+
+input, textarea {
+    margin-bottom: 5px;
+}
+
+textarea {
+    resize: none;
+}
+
+button {
+    align-self: flex-end;
 }
