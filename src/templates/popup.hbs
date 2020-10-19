@@ -1,21 +1,21 @@
 <div id="popup">
   <ul class="list">
-    {{#each data}}
+    {{#each placemarks}}
       <li class="list__item">
-        {{#with info}}
           <div class="list__item-inner">
             <div class="list__item-name">{{ name }}</div>
             <div class="list__item-place">{{ place }}</div>
           </div>
           <div class="list__item-desc">{{ content }}</div>
-        {{/with}}
       </li>
     {{/each}}
   </ul>
-  <div>ВАШ ОТЗЫВ</div>
-  <input type="text" placeholder="Ваше имя" id="name">
-  <input type="text" placeholder="Укажите место" id="place">
-  <textarea rows="5" placeholder="Поделитесь впечатлениями" id="content"></textarea>
-  <button type="button" id="btn">Добавить</button>
+  <div class="title">ВАШ ОТЗЫВ</div>
+  <div class="form" data-info="{{ coords }}">
+    <input type="text" placeholder="Ваше имя" id="name">
+    <input type="text" placeholder="Укажите место" id="place">
+    <textarea rows="5" placeholder="Поделитесь впечатлениями" id="content"></textarea>
+    <button type="button" id="btn" data-btn="add">Добавить</button>
+  </div>
 </div>
 

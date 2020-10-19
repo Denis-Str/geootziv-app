@@ -2,12 +2,14 @@ body {
     position: relative;
     margin: 0;
     padding: 0;
+    border-radius: 10px;
 }
 
 ul {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    font-size: 18px;
 }
 
 #map {
@@ -16,16 +18,36 @@ ul {
 }
 
 #popup {
-    display: flex;
-    flex-direction: column;
     background-color: #fff;
 }
+
+.title {
+    color: #ff8663;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.list__item {
+    margin-bottom: 15px;
+}
+
 .list__item-inner {
     display: flex;
 }
 
+.list__item-name {
+    font-weight: bold;
+    padding-right: 20px;
+}
+
 input, textarea {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 textarea {
@@ -34,4 +56,9 @@ textarea {
 
 button {
     align-self: flex-end;
+    background-color: #ff8663;
+    color: #ffffff;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
 }
