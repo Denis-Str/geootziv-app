@@ -27,16 +27,30 @@ function mapInit() {
     myMap.events.add('click', (e) => createdBalloon(e.get('coords')));
 
     document.addEventListener('click', (e) => {
+      let name = document.querySelector('#name');
+      let place = document.querySelector('#place');
+      let content = document.querySelector('#content');
 
       if (e.target.dataset.btn === 'add') {
         let coordsStr = document.querySelector('[data-info]').dataset.info;
         let coords = JSON.parse(coordsStr);
-        let name = document.querySelector('#name').value;
-        let place = document.querySelector('#place').value;
-        let content = document.querySelector('#content').value;
-        placemarks.push({coords: coordsStr, name, place, content});
-        createdPlacemark({coords, info: {name, place, content}});
-        myMap.balloon.close();
+
+        if (formValidate({name, place, content})) {
+          placemarks.push({
+            coords: coordsStr,
+            name: name.value,
+            place: place.value,
+            content: content.value
+          });
+          createdPlacemark({coords, info: {
+            name: name.value,
+              place: place.value,
+              content: content.value}
+          });
+          myMap.balloon.close();
+        } else {
+          alert('заполните форму');
+        }
       }
     });
 
@@ -61,6 +75,14 @@ function mapInit() {
       return placemarks.filter((pin) => pin.coords === JSON.stringify(coords))
     }
   })
+
+  const formValidate = (obj) => {
+    let valid = true;
+    for (let elem in obj) {
+      if (obj[elem].value === "") return valid = false;
+    }
+    return valid;
+  };
 }
 
 export {mapInit}
